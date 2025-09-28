@@ -1,12 +1,12 @@
 
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { useAtom } from 'jotai';
 import { currentSprintAtom, storiesAtom } from '@/stores/appStore';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { AddStoryModal } from '@/components/AddStoryModal';
 import { Calendar, Plus } from 'lucide-react';
-import { format, eachDayOfInterval, parseISO, addDays } from 'date-fns';
+import { format, eachDayOfInterval, parseISO } from 'date-fns';
 
 export function RoadmapSection() {
   const [currentSprint] = useAtom(currentSprintAtom);

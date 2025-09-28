@@ -1,4 +1,3 @@
-import React from 'react';
 import { useAtom } from 'jotai';
 import { filterTextAtom, filterKeywordsAtom, filterDueSoonAtom } from '@/stores/appStore';
 import { Input } from '@/components/ui/input';

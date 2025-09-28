@@ -1,13 +1,12 @@
-import React from 'react';
 import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts';
 import { useAtom } from 'jotai';
-import { currentSprintAtom, storiesAtom, safeColumnsAtom } from '@/stores/appStore';
+import { currentSprintAtom, storiesAtom } from '@/stores/appStore';
 import { format, eachDayOfInterval, parseISO } from 'date-fns';
 
 export function BurnupChart() {
   const [currentSprint] = useAtom(currentSprintAtom);
   const [stories] = useAtom(storiesAtom);
-  const [columns] = useAtom(safeColumnsAtom);
+  // const [columns] = useAtom(safeColumnsAtom);
 
   const generateBurnupData = () => {
     if (!currentSprint) return [];

@@ -4,7 +4,6 @@ import { storiesByColumnAtom, safeColumnsAtom, moveStoryAtom, deleteStoryAtom, a
 import { KanbanColumn } from '@/components/KanbanColumn';
 import { EditStoryModal } from '@/components/EditStoryModal';
 import { DndContext, DragEndEvent, DragOverEvent, DragStartEvent, PointerSensor, useSensor, useSensors, DragOverlay } from '@dnd-kit/core';
-import { arrayMove } from '@dnd-kit/sortable';
 import { StoryCard } from '@/components/StoryCard';
 import { Button } from '@/components/ui/button';
 import { Undo } from 'lucide-react';
@@ -12,7 +11,7 @@ import type { Story } from '@/types';
 
 export function KanbanBoard() {
   const [storiesByColumn] = useAtom(storiesByColumnAtom);
-  const [columns, setColumns] = useAtom(safeColumnsAtom);
+  const [columns] = useAtom(safeColumnsAtom);
   const [, moveStory] = useAtom(moveStoryAtom);
   const [, deleteStory] = useAtom(deleteStoryAtom);
   const [, addStory] = useAtom(addStoryAtom);
@@ -55,24 +54,8 @@ export function KanbanBoard() {
         console.log('Undo delete: restoring story', lastAction.storyId);
         updateStory(lastAction.storyId, { deleted: false });
         
-        // Also restore to the original column if it exists
-        if (lastAction.story.columnId) {
-          console.log('Restoring story to column:', lastAction.story.columnId);
-          // Check if the story is already in the column to avoid duplicates
-          const targetColumn = columns.find(col => col.id === lastAction.story.columnId);
-          if (targetColumn && !targetColumn.storyIds.includes(lastAction.storyId)) {
-            console.log('Adding story back to column:', lastAction.story.columnId);
-            // Directly update the columns to add the story back to its original column
-            const updatedColumns = columns.map(col => 
-              col.id === lastAction.story.columnId
-                ? { ...col, storyIds: [...col.storyIds, lastAction.storyId] }
-                : col
-            );
-            setColumns(updatedColumns);
-          } else {
-            console.log('Story already in column or column not found, skipping column update');
-          }
-        }
+        // Story will be restored to the icebox column by default
+        console.log('Story restored to icebox column');
       } else if (lastAction.type === 'move' && lastAction.previousColumnId) {
         // Restore previous column assignment
         // Find the current column of the story
@@ -234,7 +217,7 @@ export function KanbanBoard() {
     setActiveId(null);
   };
 
-  const handleDragOver = (event: DragOverEvent) => {
+  const handleDragOver = (_event: DragOverEvent) => {
     // Handle drag over logic if needed
   };
 

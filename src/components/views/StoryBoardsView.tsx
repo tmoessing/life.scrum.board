@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useAtom } from 'jotai';
-import { storiesAtom, rolesAtom, labelsAtom, visionsAtom, safeSprintsAtom, currentSprintAtom, settingsAtom, updateStoryAtom, deleteStoryAtom } from '@/stores/appStore';
+import { storiesAtom, rolesAtom, visionsAtom, safeSprintsAtom, settingsAtom, updateStoryAtom, deleteStoryAtom } from '@/stores/appStore';
 import { getWeightGradientColor } from '@/utils';
 import { FilterBar } from '@/components/FilterBar';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
@@ -18,10 +18,10 @@ type ViewType = 'list' | 'pie';
 export function StoryBoardsView() {
   const [stories] = useAtom(storiesAtom);
   const [roles] = useAtom(rolesAtom);
-  const [labels] = useAtom(labelsAtom);
+  // const [labels] = useAtom(labelsAtom);
   const [visions] = useAtom(visionsAtom);
   const [sprints] = useAtom(safeSprintsAtom);
-  const [currentSprint] = useAtom(currentSprintAtom);
+  // const [currentSprint] = useAtom(currentSprintAtom);
   const [settings] = useAtom(settingsAtom);
   const [, updateStory] = useAtom(updateStoryAtom);
   const [, deleteStory] = useAtom(deleteStoryAtom);
@@ -329,7 +329,7 @@ export function StoryBoardsView() {
 
   // Pie chart data preparation
   const getPieChartData = () => {
-    const filteredStories = getFilteredStories();
+    // const filteredStories = getFilteredStories();
     
     switch (selectedBoardType) {
       case 'Priority':
@@ -440,7 +440,7 @@ export function StoryBoardsView() {
                   stroke="white"
                   strokeWidth="2"
                   className="hover:opacity-80 transition-opacity cursor-pointer"
-                  title={`${item.label}: ${item.value} stories (${Math.round(percentage * 100)}%)`}
+                  data-tooltip={`${item.label}: ${item.value} stories (${Math.round(percentage * 100)}%)`}
                 />
               );
             })}

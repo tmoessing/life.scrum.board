@@ -8,7 +8,7 @@ import {
 } from '@/stores/appStore';
 
 export function useKeyboardShortcuts() {
-  const [currentView, setCurrentView] = useAtom(currentViewAtom);
+  const [, setCurrentView] = useAtom(currentViewAtom);
   const [, setChartSectionCollapsed] = useAtom(chartSectionCollapsedAtom);
   const [, setBoardSectionCollapsed] = useAtom(boardSectionCollapsedAtom);
   const [, setRoadmapSectionCollapsed] = useAtom(roadmapSectionCollapsedAtom);

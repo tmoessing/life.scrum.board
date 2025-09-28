@@ -5,7 +5,7 @@ import { Card, CardContent } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import { MoreHorizontal, Calendar, User, Tag, Weight } from 'lucide-react';
-import type { Story } from '@/types';
+import type { Story, Priority } from '@/types';
 import { useAtom } from 'jotai';
 import { rolesAtom, labelsAtom, visionsAtom, settingsAtom } from '@/stores/appStore';
 import { getWeightGradientColor } from '@/utils';

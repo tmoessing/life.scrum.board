@@ -5,10 +5,7 @@ import {
   labelsAtom, 
   settingsAtom, 
   storiesAtom,
-  safeSprintsAtom,
   visionsAtom,
-  columnsAtom,
-  boardsAtom,
   exportDataAtom,
   importDataAtom,
   addRoleAtom, 
@@ -23,19 +20,16 @@ import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Badge } from '@/components/ui/badge';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
-import { Plus, Edit, Trash2, Palette, Users, Tag, Settings as SettingsIcon, Weight, AlertTriangle, Download, Upload, Database } from 'lucide-react';
+import { Plus, Edit, Trash2, Users, Tag, Settings as SettingsIcon, Weight, AlertTriangle, Download, Database } from 'lucide-react';
 import { getWeightGradientColor, exportAllData, importAllData, createBackupBeforeImport } from '@/utils';
 
 
 export function SettingsView() {
-  const [roles, setRoles] = useAtom(rolesAtom);
-  const [labels, setLabels] = useAtom(labelsAtom);
+  const [roles] = useAtom(rolesAtom);
+  const [labels] = useAtom(labelsAtom);
   const [settings, setSettings] = useAtom(settingsAtom);
-  const [stories, setStories] = useAtom(storiesAtom);
-  const [sprints, setSprints] = useAtom(safeSprintsAtom);
-  const [visions, setVisions] = useAtom(visionsAtom);
-  const [columns, setColumns] = useAtom(columnsAtom);
-  const [boards, setBoards] = useAtom(boardsAtom);
+  const [stories] = useAtom(storiesAtom);
+  const [visions] = useAtom(visionsAtom);
   const [exportData] = useAtom(exportDataAtom);
   const [, importData] = useAtom(importDataAtom);
   
@@ -175,7 +169,7 @@ export function SettingsView() {
         });
         
         // Merge imported stories, keeping the newest version
-        (importedData.stories || []).forEach(importedStory => {
+        (importedData.stories || []).forEach((importedStory: any) => {
           const existing = storyMap.get(importedStory.id);
           if (existing) {
             // Compare updatedAt timestamps

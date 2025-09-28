@@ -57,7 +57,7 @@ export const safeSprintsAtom = atom(
     const sprints = get(sprintsAtom);
     return sprints.length > 0 ? sprints : defaultSprints;
   },
-  (get, set, newSprints: Sprint[]) => {
+  (_, set, newSprints: Sprint[]) => {
     set(sprintsAtom, newSprints.length > 0 ? newSprints : defaultSprints);
   }
 );
@@ -72,7 +72,7 @@ export const safeColumnsAtom = atom(
     const columns = get(columnsAtom);
     return columns.length > 0 ? columns : defaultColumns;
   },
-  (get, set, newColumns: Column[]) => {
+  (_, set, newColumns: Column[]) => {
     set(columnsAtom, newColumns.length > 0 ? newColumns : defaultColumns);
   }
 );
@@ -156,9 +156,9 @@ export const filteredStoriesAtom = atom(
     const dueSoon = get(filterDueSoonAtom);
     const roles = get(rolesAtom);
     const labels = get(labelsAtom);
-    const visions = get(visionsAtom);
+    // const visions = get(visionsAtom);
     
-    return filterStories(stories, text, keywords, dueSoon, roles, labels, visions);
+    return filterStories(stories, text, keywords, dueSoon, roles, labels);
   }
 );
 

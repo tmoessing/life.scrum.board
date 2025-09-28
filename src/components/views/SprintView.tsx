@@ -1,10 +1,8 @@
-import React from 'react';
 import { useAtom } from 'jotai';
 import { 
   currentSprintAtom, 
   safeSprintsAtom,
   selectedSprintIdAtom,
-  storiesByColumnAtom,
   chartSectionCollapsedAtom,
   boardSectionCollapsedAtom,
   roadmapSectionCollapsedAtom,
@@ -23,7 +21,7 @@ export function SprintView() {
   const [currentSprint] = useAtom(currentSprintAtom);
   const [sprints] = useAtom(safeSprintsAtom);
   const [selectedSprintId, setSelectedSprintId] = useAtom(selectedSprintIdAtom);
-  const [storiesByColumn] = useAtom(storiesByColumnAtom);
+  // const [storiesByColumn] = useAtom(storiesByColumnAtom);
   const [chartSectionCollapsed, setChartSectionCollapsed] = useAtom(chartSectionCollapsedAtom);
   const [boardSectionCollapsed, setBoardSectionCollapsed] = useAtom(boardSectionCollapsedAtom);
   const [roadmapSectionCollapsed, setRoadmapSectionCollapsed] = useAtom(roadmapSectionCollapsedAtom);

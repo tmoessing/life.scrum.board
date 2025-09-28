@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { useAtom } from 'jotai';
 import { currentViewAtom } from '@/stores/appStore';
 import { Button } from '@/components/ui/button';

@@ -1,6 +1,6 @@
 import { format, startOfWeek, endOfWeek, getISOWeek, getYear, addWeeks, parseISO, isValid } from 'date-fns';
 import { v4 as uuidv4 } from 'uuid';
-import type { Story, Sprint, Priority, StoryType, Role, Label, Vision, Settings } from '@/types';
+import type { Story, Sprint, Priority, Role, Label, Vision, Settings } from '@/types';
 
 // Date utilities
 export const getCurrentWeek = (): { isoWeek: number; year: number } => {
@@ -211,7 +211,7 @@ export const filterStories = (
   dueSoon: boolean,
   roles: Role[],
   labels: Label[],
-  visions: Vision[]
+  // visions: Vision[]
 ): Story[] => {
   let filtered = stories.filter(story => !story.deleted);
   

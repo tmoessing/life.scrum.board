@@ -1,13 +1,12 @@
-import React from 'react';
 import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts';
 import { useAtom } from 'jotai';
-import { currentSprintAtom, storiesAtom, safeColumnsAtom } from '@/stores/appStore';
+import { currentSprintAtom, storiesAtom } from '@/stores/appStore';
 import { format, eachDayOfInterval, parseISO } from 'date-fns';
 
 export function BurndownChart() {
   const [currentSprint] = useAtom(currentSprintAtom);
   const [stories] = useAtom(storiesAtom);
-  const [columns] = useAtom(safeColumnsAtom);
+  // const [columns] = useAtom(safeColumnsAtom);
 
   const generateBurndownData = () => {
     if (!currentSprint) return [];
@@ -24,10 +23,10 @@ export function BurndownChart() {
     const idealBurndown = totalWeight / (days.length - 1);
 
     // Calculate actual burndown based on stories in Done column
-    const doneColumn = columns.find(col => col.name === 'Done');
-    const doneStories = doneColumn ? doneColumn.storyIds.map(id => 
-      stories.find(story => story.id === id)
-    ).filter(Boolean) : [];
+    // const doneColumn = columns.find(col => col.name === 'Done');
+    // const doneStories = doneColumn ? doneColumn.storyIds.map(id => 
+    //   stories.find(story => story.id === id)
+    // ).filter(Boolean) : [];
 
     return days.map((day, index) => {
       const dayStr = format(day, 'MMM dd');

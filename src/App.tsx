@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import { useEffect } from 'react';
 import { Provider } from 'jotai';
 import { Header } from '@/components/Header';
 import { SprintView } from '@/components/views/SprintView';
@@ -17,8 +17,8 @@ function AppContent() {
   // Migration: Ensure storySizes and visionTypes exist
   useEffect(() => {
     if (!settings.storySizes) {
-      setSettings(prev => ({
-        ...prev,
+      setSettings({
+        ...settings,
         storySizes: [
           { name: 'XS', color: '#10B981', timeEstimate: '15 min' },
           { name: 'S', color: '#3B82F6', timeEstimate: '30 min' },
@@ -26,18 +26,18 @@ function AppContent() {
           { name: 'L', color: '#EF4444', timeEstimate: '2-4 hours' },
           { name: 'XL', color: '#8B5CF6', timeEstimate: '1+ days' }
         ]
-      }));
+      });
     }
     if (!settings.visionTypes) {
-      setSettings(prev => ({
-        ...prev,
+      setSettings({
+        ...settings,
         visionTypes: [
           { name: 'Spiritual', color: '#8B5CF6' },
           { name: 'Physical', color: '#EF4444' },
           { name: 'Intellectual', color: '#3B82F6' },
           { name: 'Social', color: '#10B981' }
         ]
-      }));
+      });
     }
   }, [settings.storySizes, settings.visionTypes, setSettings]);
 

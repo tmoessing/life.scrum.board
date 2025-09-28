@@ -7,7 +7,7 @@ import { Button } from '@/components/ui/button';
 import { AddStoryModal } from '@/components/AddStoryModal';
 import { EditStoryModal } from '@/components/EditStoryModal';
 import { Plus, Calendar, Target, Clock, Edit, Undo } from 'lucide-react';
-import type { Story, Sprint } from '@/types';
+import type { Story } from '@/types';
 
 export function SprintPlanningView() {
   const [stories] = useAtom(storiesAtom);

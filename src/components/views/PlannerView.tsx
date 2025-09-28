@@ -1,8 +1,7 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { useAtom } from 'jotai';
-import { storiesAtom, rolesAtom, labelsAtom, visionsAtom } from '@/stores/appStore';
+import { storiesAtom, rolesAtom, visionsAtom } from '@/stores/appStore';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
-import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { Brain, Clock, Target } from 'lucide-react';
@@ -12,7 +11,7 @@ import { getBrainLevelWeights, getPriorityOrder } from '@/utils';
 export function PlannerView() {
   const [stories] = useAtom(storiesAtom);
   const [roles] = useAtom(rolesAtom);
-  const [labels] = useAtom(labelsAtom);
+  // const [labels] = useAtom(labelsAtom);
   const [visions] = useAtom(visionsAtom);
 
   const [selectedBrainLevel, setSelectedBrainLevel] = useState<BrainLevel>('moderate');
